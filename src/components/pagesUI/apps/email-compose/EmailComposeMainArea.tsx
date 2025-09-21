@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
@@ -21,7 +21,7 @@ const EmailComposeMainArea = () => {
 
   //file upload
   useEffect(() => {
-    const singleDropzone = initializeDropzone('singleFileUpload', 1);
+    const singleDropzone = initializeDropzone("singleFileUpload", 1);
     return () => {
       if (singleDropzone) {
         singleDropzone.destroy();
@@ -37,19 +37,42 @@ const EmailComposeMainArea = () => {
           <div className="grid grid-cols-12 gap-5 maxXs:gap-x-0">
             <div className="col-span-12 md:col-span-6 xl:col-span-3">
               <div className="email__sidebar">
-                <button type="button" className="btn btn-primary rounded-pill email__toggle-btn" onClick={(e) => {toggleDropdownInbox()}}>
-                email filter</button>
-                <div className={`email__left-side ${isOpenInbox === true ? "open" : ""}`}>
+                <button
+                  type="button"
+                  className="btn btn-primary rounded-pill email__toggle-btn"
+                  onClick={(e) => {
+                    toggleDropdownInbox();
+                  }}
+                >
+                  email filter
+                </button>
+                <div
+                  className={`email__left-side ${
+                    isOpenInbox === true ? "open" : ""
+                  }`}
+                >
                   <div className="card__wrapper">
                     <div className="email__left-sidebar">
                       <div className="media flex-wrap mb-5">
-                        <div className="media-size-email"><Image className="w-[50px] border-circle me-[10px]" src={avater1} alt="image" /></div>
+                        <div className="media-size-email">
+                          <Image
+                            className="w-[50px] border-circle me-[10px]"
+                            src={avater1}
+                            alt="image"
+                          />
+                        </div>
                         <div className="media-body">
                           <h6 className="f-w-600">Jhon Smith</h6>
                           <p>jhonsmith@manez.com</p>
                         </div>
                       </div>
-                      <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          flexDirection: "column",
+                          width: "100%",
+                        }}
+                      >
                         <Tabs
                           value={value}
                           onChange={handleChange}
@@ -57,15 +80,25 @@ const EmailComposeMainArea = () => {
                           variant="scrollable"
                         >
                           {primaryEmailTabs.map((email, index) => (
-                            <Tab key={index}
+                            <Tab
+                              key={index}
                               label={
-                                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+                                <Box
+                                  sx={{
+                                    display: "flex",
+                                    justifyContent: "space-between",
+                                    alignItems: "center",
+                                    width: "100%",
+                                  }}
+                                >
                                   <span className="flex items-center">
                                     <i className={`${email.icon} me-3`} />
                                     {email.label}
                                   </span>
                                   {email.count !== null && (
-                                    <span className="email__left-meta">{email.count}</span>
+                                    <span className="email__left-meta">
+                                      {email.count}
+                                    </span>
                                   )}
                                 </Box>
                               }
@@ -73,15 +106,25 @@ const EmailComposeMainArea = () => {
                           ))}
                           <div className="divider"></div>
                           {secondaryEmailTabs.map((email, index) => (
-                            <Tab key={index}
+                            <Tab
+                              key={index}
                               label={
-                                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+                                <Box
+                                  sx={{
+                                    display: "flex",
+                                    justifyContent: "space-between",
+                                    alignItems: "center",
+                                    width: "100%",
+                                  }}
+                                >
                                   <span className="flex items-center">
                                     <i className={`${email.icon} me-3`} />
                                     {email.label}
                                   </span>
                                   {email.count !== null && (
-                                    <span className="email__left-meta">{email.count}</span>
+                                    <span className="email__left-meta">
+                                      {email.count}
+                                    </span>
                                   )}
                                 </Box>
                               }
@@ -103,26 +146,42 @@ const EmailComposeMainArea = () => {
                         <div className="email-top compose-border mb-5">
                           <div className="compose-header flex-wrap gap-[10px]">
                             <h4 className="mb-0">New Message</h4>
-                            <button className="btn btn-secondary" type="button"><i
-                              className="fa fa-file me-2"></i>
-                              save</button>
+                            <button className="btn btn-secondary" type="button">
+                              <i className="fa fa-file me-2"></i>
+                              save
+                            </button>
                           </div>
                         </div>
                         <div className="email-wrapper">
                           <form className="email-form">
                             <div className="form-group">
-                              <label className="col-form-label pt-0" htmlFor="exampleInputEmail1">To</label>
-                              <input className="form-control" id="exampleInputEmail1" type="email" />
+                              <label
+                                className="col-form-label pt-0"
+                                htmlFor="exampleInputEmail1"
+                              >
+                                To
+                              </label>
+                              <input
+                                className="form-control"
+                                id="exampleInputEmail1"
+                                type="email"
+                              />
                             </div>
                             <div className="form-group">
-                              <label htmlFor="exampleInputPassword1">Subject</label>
-                              <input className="form-control" id="exampleInputPassword1" type="text" />
+                              <label htmlFor="exampleInputPassword1">
+                                Subject
+                              </label>
+                              <input
+                                className="form-control"
+                                id="exampleInputPassword1"
+                                type="text"
+                              />
                             </div>
                             <div className="form-group">
                               <label>Message</label>
                               <Editor
                                 apiKey="uonxh66a1gnxnn8g0lsc2ow4pa5c9jys8sa0fadd1txn49y7"
-                                onInit={(_evt, editor) =>
+                                onInit={(_evt: any, editor: any) =>
                                   (editorRef.current = editor)
                                 }
                                 init={{
@@ -166,22 +225,34 @@ const EmailComposeMainArea = () => {
                               />
                             </div>
                             <div className="form-group dropzone-wrapper dropzone-border">
-                              <div className="dropzone digits text-center" id="singleFileUpload">
-                                <div className="dz-message needsclick"><i
-                                  className="fa-thin fa-cloud-arrow-up"></i>
-                                  <h6>Drop files here or click to upload.</h6><span
-                                    className="note needsclick">(This is just a demo dropzone. Selected
-                                    files are not actually uploaded.)</span>
+                              <div
+                                className="dropzone digits text-center"
+                                id="singleFileUpload"
+                              >
+                                <div className="dz-message needsclick">
+                                  <i className="fa-thin fa-cloud-arrow-up"></i>
+                                  <h6>Drop files here or click to upload.</h6>
+                                  <span className="note needsclick">
+                                    (This is just a demo dropzone. Selected
+                                    files are not actually uploaded.)
+                                  </span>
                                 </div>
                               </div>
                             </div>
                           </form>
                           <div className="action-wrapper">
                             <ul className="actions">
-                              <li><Link className="btn btn-primary" href="#"><i
-                                className="fa fa-paper-plane"></i>send </Link></li>
-                              <li><Link className="btn btn-danger" href="#"> <i
-                                className="fa fa-times"></i>cancel</Link></li>
+                              <li>
+                                <Link className="btn btn-primary" href="#">
+                                  <i className="fa fa-paper-plane"></i>send{" "}
+                                </Link>
+                              </li>
+                              <li>
+                                <Link className="btn btn-danger" href="#">
+                                  {" "}
+                                  <i className="fa fa-times"></i>cancel
+                                </Link>
+                              </li>
                             </ul>
                           </div>
                         </div>
