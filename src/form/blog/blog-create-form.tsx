@@ -152,7 +152,7 @@ const BlogCreateForm = () => {
                         <div className="from__input-box">
                           <Editor
                             apiKey="uonxh66a1gnxnn8g0lsc2ow4pa5c9jys8sa0fadd1txn49y7"
-                            onInit={(_evt, editor) =>
+                            onInit={(_evt: any, editor: any) =>
                               (editorRef.current = editor)
                             }
                             init={{
